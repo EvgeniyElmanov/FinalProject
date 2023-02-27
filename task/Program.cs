@@ -3,6 +3,22 @@
 // на старте выполнения алгоритма.
 // При решение не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами
 
+string[] StringArray(string[] array1)
+{
+  string[] array2 = new string[array1.Length];
+  int count = 0;
+  for (int i = 0; i < array1.Length; i++)
+  {
+    if (array1[i].Length <= 3)
+    {
+      array2[count] = array1[i];
+      count++;
+    }
+  }
+  Array.Resize(ref array2, count);
+  return array2;
+}
+
 string[] GetNumber(int size)
 {
   string[] arr = new string[size];
@@ -22,3 +38,5 @@ int EntNumber(string text)
 
 int number = EntNumber("Enter of number elements array: ");
 string[] result = GetNumber(number);
+Console.Write("[" + String.Join(", ", result) + "] -> ");
+Console.WriteLine("[" + String.Join(", ", StringArray(result)) + "]");
